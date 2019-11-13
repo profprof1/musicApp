@@ -1,4 +1,33 @@
 body{
-    background: #5c3b54;
+    /* background: #5c3b54; */
+    background: white;
+    /* color: white */
+}
+.footer-image{
+    height: 80px;
+    width: 80px;
+}
+.footer-bg{
+    background:rgb(68, 62, 62);
+    height: 80px;
+}
+.play-icons{
+    font-size: 20px;
+    color: whitesmoke;
+    margin-left: 300px;
+    padding-left: 30px
+}
+.volume{
+    margin-left: 500px;
     color: white
 }
+.well{
+    background-color:  rgb(61, 51, 51);
+    height: 300px
+}
+.track-img{
+    height: 200px;
+}
+/* .well:hover{
+    background-color: lightgray
+} */
