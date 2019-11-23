@@ -3,6 +3,18 @@ body{
     background: white;
     /* color: white */
 }
+#header div:last-child p {
+    font-weight: bolder;
+}
+#header div:last-child p:nth-child(1) {
+    font-size: 2em;
+}
+#header div:last-child p:nth-child(2) {
+    font-size: 1.5em;
+}
+#header div:last-child p:nth-child(3) {
+    font-size: 1.2em;
+}
 .footer-image{
     height: 80px;
     width: 80px;
