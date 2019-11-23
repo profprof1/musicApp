@@ -36,12 +36,29 @@ function playPause(){
 }
 //////////////////////////////
 function nextTrack() {
+	if(songindex == songs.length - 1){
+		songindex = 0;
+		audio.src = "audio/"+songs[songindex]+ext;
+	}
+	else{
 
+		songindex++;
+		audio.src = "audio/"+songs[songindex]+ext;
+	}
+	audio.play();
 }
 //////////////////////////////
 
 function prevTrack() {
-
+	if(songindex == 0) {
+		songindex = songs.length - 1;
+		audio.src = "audio/"+songs[songindex]+ext;
+	}
+	else{
+		songindex--;
+		audio.src = "audio/"+songs[songindex]+ext;
+	}
+	audio.play();
 }
 //////////////////////////////
 
