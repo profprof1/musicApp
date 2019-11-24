@@ -3,92 +3,100 @@ let playpause = document.querySelector("#playpause");
 let prev = document.querySelector("#prev");
 let next = document.querySelector("#next");
 let repeat = document.querySelector("#repeat");
-
 let audio = new Audio();
+let songindex = 0;
 // songs array should be filled with the name of the songs in your playlist
 // this is temporary, as we will fetch the songs from an API in the future
+// let songs = ["01","fifth","husband","rabiu","djsnake"];
+// let artists = ["Aerosmith","Wizkid","Eminem","Rabiu","Bieber"];
+// let ext = ".mp3";
+// let songindex = 0;
+// let artistindex = 0;
+
 const songs = [
 	{
-	  id: 1,
-	  artist: 'Burna Boy',
-	  year: 2019,
-	  imageUrl: '/',
-	  track: '/audio/01 Mark My Words.mp3'
+		artist: 'Bieber',
+		year: 2019,
+		imageUrl: '/',
+		track: 'audio/01.mp3'
 	},
 	{
-		id: 2,
-		artist: 'Olamide',
+		artist: 'Bieber',
 		year: 2019,
 		imageUrl: '/',
-		track: '/audio/07 No Pressure.mp3'
-	  },
-	  {
-		id: 3,
-		artist: 'Wizkid',
-		year: 2019,
+		track: 'audio/jaded.mp3'
+	},
+	{
+		artist: 'Akon',
+		year: 2017,
 		imageUrl: '/',
-		track: '/audio/09 The Feeling.mp3'
-	  }
-	]
+		track: 'audio/unpredictable.mp3'
+	}
+]
 // array containing names of artists in ur playlist
-
-let artists =[];  
-let ext = ".mp3";
-let songIndex = 0;
-let artistIndex = 0;
-
 
 // Functions 
 function initAudioPlayer() {
-	audio.src = "audio/"+songs[songIndex]+ext;
-	// audio.src = songs[songIndex].track       ......!!!!check this
+	//audio.src = "audio/"+songs[songindex]+ext;
+	audio.src = songs[songindex].track
 	audio.loop = false;
-
 	// Event Handling
 	playpause.addEventListener("click", playPause);
 	next.addEventListener("click", nextTrack);
 	prev.addEventListener("click", prevTrack);
+	repeat.addEventListener("click", repeatTrack);
 }
 //////////////////////////////
 function playPause(){
 	if(audio.paused){
 		audio.play();
+		classToggler();
 	}
 	else{
 		audio.pause();
+		classToggler();
+	}
+}
+//////////////////////////////
+function classToggler(){
+	if(playpause.classList.contains("fa-play")){
+		playpause.classList.toggle("fa-pause");
+	}
+	else{
+		playpause.classList.toggle("fa-play");
 	}
 }
 //////////////////////////////
 function nextTrack() {
 	if(songindex == songs.length - 1){
 		songindex = 0;
-		audio.src = "audio/"+songs[songindex]+ext;
-		// audio.src = songs[songIndex].track       .......!!! check this
+		audio.src = songs[songindex].track;
+		//playPause();	
 	}
 	else{
-
 		songindex++;
-		audio.src = "audio/"+songs[songindex]+ext;
+		audio.src = songs[songindex].track;
+		// playPause();	
 	}
 	audio.play();
+	playpause.classList.add("fa-pause");
 }
 //////////////////////////////
-
 function prevTrack() {
 	if(songindex == 0) {
 		songindex = songs.length - 1;
-		audio.src = "audio/"+songs[songindex]+ext;
-		// audio.src = songs[songIndex].track       .......!!! check this
+		audio.src = songs[songindex].track;
 	}
 	else{
 		songindex--;
-		audio.src = "audio/"+songs[songindex]+ext;
-		// audio.src = songs[songIndex].track       .......!!! check this
+		audio.src = songs[songindex].track;
 	}
 	audio.play();
+	playpause.classList.add("fa-pause");
 }
 //////////////////////////////
-
-
-
+function repeatTrack() {
+	// code
+}
+//////////////////////////////
 window.addEventListener("load", initAudioPlayer);
