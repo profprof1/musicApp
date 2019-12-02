@@ -20,7 +20,7 @@ body{
     width: 80px;
 }
 .footer-bg{
-    background:rgb(68, 62, 62);
+    background: rgb(10, 90, 122);
     height: 80px;
     bottom: 0;
 }
@@ -31,7 +31,7 @@ body{
     padding-left: 30px
 }
 .volume{
-    margin-left: 500px;
+    margin-left: 400px;
     color: white
 }
 .well{
@@ -41,6 +41,17 @@ body{
 .track-img{
     height: 200px;
 }
+
+.repeat{
+    margin: 5px;
+}
+ .repeat:hover{
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: darkslategrey;
+    width: 25px;
+    height: 25px;
+} 
 /* .well:hover{
     background-color: lightgray
 } */

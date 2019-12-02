@@ -44,8 +44,9 @@ function initAudioPlayer() {
 	playpause.addEventListener("click", playPause);
 	next.addEventListener("click", nextTrack);
 	prev.addEventListener("click", prevTrack);
-	repeat.addEventListener("click", repeatTrack);
-}
+	repeat.addEventListener("click", repeatSingle);
+	repeat.removeEventListener('click', removeRepeat)
+
 //////////////////////////////
 function playPause(){
 	if(audio.paused){
@@ -95,8 +96,27 @@ function prevTrack() {
 	playpause.classList.add("fa-pause");
 }
 //////////////////////////////
-function repeatTrack() {
-	// code
+// function repeatAll() {
+// 	if(audio.play() && repeatSingle == false){ 
+// 		return songs[songindex].track.loop = true 
+// 	}
+// 	else return songs[songindex].track.loop = false
+// }
+
+function repeatSingle(){
+	let x = document.getElementById('repeat')
+	x.style.backgroundColor = 'rgb(61, 51, 51)'
+	x.style.borderRadius = '50%'
+	x.style.width = '25px'
+	x.style.height = '25px'
+	return audio.loop = true;
 }
+function removeRepeat(){
+	let y = document.getElementById('repeat')
+	y.style.backgroundColor = 'none'
+	return audio.loop = false
+}
+
 //////////////////////////////
-window.addEventListener("load", initAudioPlayer);
+window.addEventListener("load", initAudioPlayer)
+}
