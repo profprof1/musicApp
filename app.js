@@ -45,8 +45,9 @@ function initAudioPlayer() {
 	next.addEventListener("click", nextTrack);
 	prev.addEventListener("click", prevTrack);
 	repeat.addEventListener("click", repeatSingle);
-	repeat.removeEventListener('click', removeRepeat)
+	// repeat.removeEventListener('click', repeatSingle)
 
+}
 //////////////////////////////
 function playPause(){
 	if(audio.paused){
@@ -109,14 +110,8 @@ function repeatSingle(){
 	x.style.borderRadius = '50%'
 	x.style.width = '25px'
 	x.style.height = '25px'
-	return audio.loop = true;
-}
-function removeRepeat(){
-	let y = document.getElementById('repeat')
-	y.style.backgroundColor = 'none'
-	return audio.loop = false
+	audio.loop = true;
 }
 
 //////////////////////////////
 window.addEventListener("load", initAudioPlayer)
-}
