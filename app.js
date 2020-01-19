@@ -3,40 +3,54 @@ let playpause = document.querySelector("#playpause");
 let prev = document.querySelector("#prev");
 let next = document.querySelector("#next");
 let repeat = document.querySelector("#repeat");
+let volumeslider = document.querySelector("#volumeslider");
+let speaker = document.querySelector("#speaker");
 let audio = new Audio();
 let songindex = 0;
-// songs array should be filled with the name of the songs in your playlist
-// this is temporary, as we will fetch the songs from an API in the future
-// let songs = ["01","fifth","husband","rabiu","djsnake"];
-// let artists = ["Aerosmith","Wizkid","Eminem","Rabiu","Bieber"];
-// let ext = ".mp3";
-// let songindex = 0;
-// let artistindex = 0;
+let t1 = document.querySelectorAll('#track1')
+// array containing names of artists and track in ur playlist
 
+  
 const songs = [
 	{
-		artist: 'Bieber',
+		artist: 'Justin Beiber',
 		year: 2019,
 		imageUrl: '/',
-		track: 'audio/01.mp3'
+		track: `audio/02 I'll Show You.mp3`,
+		id:1
 	},
 	{
 		artist: 'Bieber',
 		year: 2019,
 		imageUrl: '/',
-		track: 'audio/jaded.mp3'
+		track: 'audio/06 Company.mp3',
+		id:2
 	},
 	{
 		artist: 'Akon',
 		year: 2017,
 		imageUrl: '/',
-		track: 'audio/unpredictable.mp3'
+		track: 'audio/03 What Do You Mean.mp3',
+		id:3
+	},
+	{
+		artist: 'Bieber',
+		year: 2019,
+		imageUrl: '/',
+		track: 'audio/04 Sorry.mp3'
+	},
+	{
+		artist: 'Bieber',
+		year: 2019,
+		imageUrl: '/',
+		track: 'audio/01 Mark My Words.mp3'
 	}
 ]
-// array containing names of artists in ur playlist
+
+
 
 // Functions 
-function initAudioPlayer() {
+const initAudioPlayer = () => {
 	//audio.src = "audio/"+songs[songindex]+ext;
 	audio.src = songs[songindex].track
 	audio.loop = false;
@@ -44,12 +58,39 @@ function initAudioPlayer() {
 	playpause.addEventListener("click", playPause);
 	next.addEventListener("click", nextTrack);
 	prev.addEventListener("click", prevTrack);
+	//repeat.addEventListener("click", repeatSingle);
+	volumeslider.addEventListener("mousemove", setVolume);
+	speaker.addEventListener("click", mute);
+	audio.addEventListener("ended", nextTrack);
 	repeat.addEventListener("click", repeatSingle);
-	// repeat.removeEventListener('click', repeatSingle)
-
+	// Adding eventlistener to all row tracks to play songs
+	t1.forEach(item => {
+		item.addEventListener('click',clickRow) 
+	});
 }
-//////////////////////////////
-function playPause(){
+
+////////////////////////// 
+
+let row1Song = document.querySelector('#trackName')
+row1Song.innerHTML = `${songs[0].artist}`
+
+//handle table row play track
+const clickRow = el =>  {
+	if(songs[songindex].id){
+		audio.src = songs[songindex].track
+		while(audio.paused){
+			audio.play()
+			classToggler()
+		 }
+	}
+	//  while(audio.paused){
+	//    audio.play()
+	//    classToggler()
+	// }	
+}
+
+////////////////////////////
+const playPause = () =>{
 	if(audio.paused){
 		audio.play();
 		classToggler();
@@ -60,7 +101,7 @@ function playPause(){
 	}
 }
 //////////////////////////////
-function classToggler(){
+const classToggler = () =>{
 	if(playpause.classList.contains("fa-play")){
 		playpause.classList.toggle("fa-pause");
 	}
@@ -69,22 +110,19 @@ function classToggler(){
 	}
 }
 //////////////////////////////
-function nextTrack() {
+const nextTrack = () => {
 	if(songindex == songs.length - 1){
-		songindex = 0;
-		audio.src = songs[songindex].track;
-		//playPause();	
+		songindex = 0;	
 	}
 	else{
-		songindex++;
-		audio.src = songs[songindex].track;
-		// playPause();	
+		songindex++;	
 	}
+	audio.src = songs[songindex].track;
 	audio.play();
 	playpause.classList.add("fa-pause");
 }
 //////////////////////////////
-function prevTrack() {
+const prevTrack = () => {
 	if(songindex == 0) {
 		songindex = songs.length - 1;
 		audio.src = songs[songindex].track;
@@ -97,20 +135,49 @@ function prevTrack() {
 	playpause.classList.add("fa-pause");
 }
 //////////////////////////////
-// function repeatAll() {
-// 	if(audio.play() && repeatSingle == false){ 
-// 		return songs[songindex].track.loop = true 
-// 	}
-// 	else return songs[songindex].track.loop = false
-// }
+const mute = () => {
+	if(audio.muted) {
+		volumeToggler();
+		audio.muted = false;
+	}
+	else{
+		audio.muted = true;
+		volumeToggler();
+	}
+}
+//////////////////////////////
+const volumeToggler = () => {
+	if(speaker.classList.contains("fa-volume-up")) {
+		speaker.classList.remove("fa-volume-up");
+		speaker.classList.add("fa-volume-down");
+	}
+	else{
+		speaker.classList.remove("fa-volume-down");
+		speaker.classList.add("fa-volume-up");
+	}
+}
+//////////////////////////////
+const setVolume = () => {
+	audio.volume = volumeslider.value / 100;
+}
+//////////////////////////////
 
-function repeatSingle(){
-	let x = document.getElementById('repeat')
-	x.style.backgroundColor = 'rgb(61, 51, 51)'
-	x.style.borderRadius = '50%'
-	x.style.width = '25px'
-	x.style.height = '25px'
-	audio.loop = true;
+
+const repeatSingle = () => {
+	if(audio.loop) {
+		audio.loop = false;
+		repeat.style.backgroundColor = '';
+		repeat.style.borderRadius = '';
+		repeat.style.width = '';
+		repeat.style.height = '';
+	}
+	else {
+		repeat.style.backgroundColor = 'rgb(61, 51, 51)';
+		repeat.style.borderRadius = '50%';
+		repeat.style.width = '25px';
+		repeat.style.height = '25px';
+		audio.loop = true;
+	}
 }
 
 //////////////////////////////

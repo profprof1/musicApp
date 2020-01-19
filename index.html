@@ -27,64 +27,56 @@
 <div id="main" class="row mt-5">
     <h2><pre style="color:rgb(151, 48, 182)"> Tracks</pre></h2>
     <table class="table table-hover table-light">
-            <thead>
-              <tr style="color:darkcyan">
-                <th scope="col"></th>
-                <th scope="col">Songs</th>
-                <th scope="col">Artist</th>
-                <th scope="col">Duration</th>
-              </tr>
-            </thead>
             <tbody>
-              <tr>
+              <tr id='track1'>
                 <th scope="row">1.</th>
-                <td>song</td>
+                <td id="trackName">song</td>
                 <td>artist</td>
                 <td>.....</td>
               </tr>
-              <tr>
+              <tr id='track1'>
                 <th scope="row">2.</th>
-                <td>song</td>
+                <td id="trackName">song</td>
                 <td>artist</td>
                 <td>.....</td>
               </tr>
-              <tr>
+              <tr id='track1'>
                 <th scope="row">3.</th>
                 <td>song</td>
                 <td>artist</td>
                 <td>.....</td>
               </tr>
-              <tr>
+              <tr id='track1'>
                 <th scope="row">4.</th>
                 <td>song</td>
                 <td>artist</td>
                 <td>.....</td>
              </tr>
-             <tr>
+             <tr id='track1'>
                 <th scope="row">5.</th>
                 <td>song</td>
                 <td>artist</td>
                 <td>.....</td>
              </tr>
-             <tr>
+             <tr id='track1'>
                 <th scope="row">6.</th>
                 <td>song</td>
                 <td>artist</td>
                 <td>.....</td>
              </tr>
-             <tr>
+             <tr id='track1'>
                 <th scope="row">7.</th>
                 <td>song</td>
                 <td>artist</td>
                 <td>.....</td>
              </tr>
-             <tr>
+             <tr id='track1'>
                 <th scope="row">8.</th>
                 <td>song</td>
                 <td>artist</td>
                 <td>.....</td>
              </tr>
-             <tr>
+             <tr id='track1'>
                 <th scope="row">9.</th>
                 <td>song</td>
                 <td>artist</td>
@@ -104,11 +96,9 @@
             <i id="playpause" class="mr-4 play fa fa-play" data-toggle="tooltip" data-placement="top" title="Play" aria-hidden="true"></i> 
             <i id="next" class="mr-4 forward fa fa-forward" data-toggle="tooltip" data-placement="top" title="Next" aria-hidden="true"></i>
             <i id="repeat" class="repeat fa fa-repeat" data-toggle="tooltip" data-placement="top" title="Repeat" aria-hidden="true"></i>
-            <i class="volume fa fa-volume-up" data-toggle="tooltip" data-placement="top" title="mute" aria-hidden="true"></i>
-          </span>
-        <span>
-            
+            <i id="speaker" class="volume fa fa-volume-up" data-toggle="tooltip" data-placement="top" title="mute" aria-hidden="true"></i>
         </span>
+        <input id="volumeslider" type="range" min="0" max="100" value="100" step="1">
     </footer>
 </div>
 

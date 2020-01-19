@@ -48,7 +48,6 @@ body{
  .repeat:hover{
     border-radius: 50%;
     cursor: pointer;
-    background-color: darkslategrey;
     width: 25px;
     height: 25px;
 } 
