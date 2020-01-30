@@ -22,7 +22,7 @@ body{
 .footer-bg{
     background: rgb(10, 90, 122);
     height: 80px;
-    bottom: 0;
+    bottom: 0
 }
 .play-icons{
     font-size: 20px;
@@ -54,3 +54,7 @@ body{
 /* .well:hover{
     background-color: lightgray
 } */
+.list{
+    padding:20px;
+    margin:20px
+}

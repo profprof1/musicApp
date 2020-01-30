@@ -7,8 +7,7 @@ let volumeslider = document.querySelector("#volumeslider");
 let speaker = document.querySelector("#speaker");
 let audio = new Audio();
 let songindex = 0;
-let t1 = document.querySelectorAll('#track1')
-// array containing names of artists and track in ur playlist
+// let t1 = document.querySelectorAll('#track1')
 
   
 const songs = [
@@ -37,13 +36,15 @@ const songs = [
 		artist: 'Bieber',
 		year: 2019,
 		imageUrl: '/',
-		track: 'audio/04 Sorry.mp3'
+		track: 'audio/04 Sorry.mp3',
+		id:4
 	},
 	{
 		artist: 'Bieber',
 		year: 2019,
 		imageUrl: '/',
-		track: 'audio/01 Mark My Words.mp3'
+		track: 'audio/01 Mark My Words.mp3',
+		id:5
 	}
 ]
 
@@ -58,36 +59,29 @@ const initAudioPlayer = () => {
 	playpause.addEventListener("click", playPause);
 	next.addEventListener("click", nextTrack);
 	prev.addEventListener("click", prevTrack);
-	//repeat.addEventListener("click", repeatSingle);
 	volumeslider.addEventListener("mousemove", setVolume);
 	speaker.addEventListener("click", mute);
 	audio.addEventListener("ended", nextTrack);
 	repeat.addEventListener("click", repeatSingle);
 	// Adding eventlistener to all row tracks to play songs
-	t1.forEach(item => {
-		item.addEventListener('click',clickRow) 
-	});
+	// t1.forEach(item => {
+	// 	item.addEventListener('click',clickRow) 
+	// });
 }
 
 ////////////////////////// 
 
-let row1Song = document.querySelector('#trackName')
-row1Song.innerHTML = `${songs[0].artist}`
 
 //handle table row play track
-const clickRow = el =>  {
-	if(songs[songindex].id){
-		audio.src = songs[songindex].track
-		while(audio.paused){
-			audio.play()
-			classToggler()
-		 }
-	}
-	//  while(audio.paused){
-	//    audio.play()
-	//    classToggler()
-	// }	
-}
+// const clickRow = el =>  {
+// 	if(songs[songindex]){
+// 		audio.src = songs[songindex].track
+// 		while(audio.paused){
+// 			audio.play()
+// 			classToggler()
+// 		 }
+// 	}	
+// }
 
 ////////////////////////////
 const playPause = () =>{
@@ -112,12 +106,13 @@ const classToggler = () =>{
 //////////////////////////////
 const nextTrack = () => {
 	if(songindex == songs.length - 1){
-		songindex = 0;	
+		songindex = 0; 	
 	}
 	else{
 		songindex++;	
 	}
 	audio.src = songs[songindex].track;
+
 	audio.play();
 	playpause.classList.add("fa-pause");
 }
@@ -166,17 +161,17 @@ const setVolume = () => {
 const repeatSingle = () => {
 	if(audio.loop) {
 		audio.loop = false;
-		repeat.style.backgroundColor = '';
+		repeat.style.color = '';
 		repeat.style.borderRadius = '';
 		repeat.style.width = '';
 		repeat.style.height = '';
 	}
 	else {
-		repeat.style.backgroundColor = 'rgb(61, 51, 51)';
+		audio.loop = true;
+		repeat.style.color = 'rgb(61, 51, 51)';
 		repeat.style.borderRadius = '50%';
 		repeat.style.width = '25px';
 		repeat.style.height = '25px';
-		audio.loop = true;
 	}
 }
 
