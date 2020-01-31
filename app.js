@@ -112,7 +112,6 @@ const nextTrack = () => {
 		songindex++;	
 	}
 	audio.src = songs[songindex].track;
-
 	audio.play();
 	playpause.classList.add("fa-pause");
 }
@@ -174,6 +173,5 @@ const repeatSingle = () => {
 		repeat.style.height = '25px';
 	}
 }
-
 //////////////////////////////
 window.addEventListener("load", initAudioPlayer)
