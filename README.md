@@ -1,2 +1,2 @@
-# musicApp
-its a simple music app on the web 
+# Music App
+ A simple music web application made with vanilla JS. 
